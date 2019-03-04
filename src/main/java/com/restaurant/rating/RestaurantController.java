@@ -3,7 +3,9 @@ package com.restaurant.rating;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,12 +23,12 @@ public class RestaurantController {
 		return mav;
 	}
 
-	@RequestMapping("/upvote/{id}/")
+	@RequestMapping("/upvote/{id}")
 	public ModelAndView sendUpvote(@PathVariable("id") Integer id) {
 
 		Restaurant restaurant = restaurantDao.findById(id);
 		restaurant.setRating(restaurant.getRating() + 1);
-		System.out.println("food");
+		restaurantDao.update(restaurant);
 		return new ModelAndView("redirect:/");
 
 	}
