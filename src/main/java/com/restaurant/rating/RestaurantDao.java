@@ -22,12 +22,16 @@ public class RestaurantDao {
 		return em.createQuery("FROM Restaurant", Restaurant.class).getResultList();
 	}
 
-	public Restaurant findById(Long id) {
+	public Restaurant findById(Integer id) {
 		return em.find(Restaurant.class, id);
 	}
 
 	public void update(Restaurant aRestaurant) {
 		em.merge(aRestaurant);
+	}
+	
+	public void upvoteRestaurant(Long id, Integer rating) {
+		em.createQuery("FROM Restaurant WHERE id = :id UPDATE rating = :rating").setParameter("id", id).setParameter("rating", rating);
 	}
 
 }

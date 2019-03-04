@@ -7,9 +7,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Restaurant {
-	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String name;
 	private Integer rating;
 
@@ -17,10 +18,19 @@ public class Restaurant {
 
 	}
 
-	public Restaurant(String name, Integer rating) {
+	public Restaurant(Integer id, String name, Integer rating) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.rating = rating;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {

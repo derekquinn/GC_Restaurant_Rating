@@ -17,11 +17,12 @@
 					<th>Restaurant</th><th>Rating</th>
 				</tr>
 			</thead>
-	
-				<c:forEach var="straunts" items="${ straunts }">
+
+				<c:forEach var="restaurant" items="${ restaurant }">
 				<tr>
-					<td>${ straunts.name}</td>
-					<td>${ straunts.rating }</td>
+					<td>${ restaurant.name}</td>
+					<td>${ restaurant.rating }</td>
+					<td>  <a href="/upvote/${ restaurant.id }">Upvote</a></td>
 					
 				</tr>
 				</c:forEach>
